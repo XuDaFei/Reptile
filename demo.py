@@ -32,6 +32,31 @@ def getDataFromTXT():
             f.close()
     return put_datas
 
+#----------------------------replace have (.*?)_s name------------------------
+def replace_s(pos, sheet, htm):
+    results = re.findall("\"n_mismatch\":(.*?)}", htm, re.S)
+    print(len(results))
+    cnt = 1
+    for result in results:
+        print(result)
+        print('id = ',cnt, result[0])
+        taxon_name = re.search("\"taxon_name\":\"(.*?)\"",result, re.S)
+        if taxon_name != None and re.search("_s", taxon_name.group(1), re.S) == None:
+            print('find first taxon_name', taxon_name.group(1))
+            sheet.write(pos, 1, taxon_name.group(1))
+            strain_name = re.search("\"strain_name\":\"(.*?)\"",result, re.S)
+            if strain_name != None:
+                sheet.write(pos, 2, strain_name.group(1)+'(T)')
+            similarity = re.search("\"similarity\":(.*?),",result, re.S)
+            if similarity != None:
+                sheet.write(pos, 3, similarity.group(1))
+            taxonomy = re.search("\"taxonomy\":\"(.*?)\"",result, re.S)
+            if taxonomy != None:
+                sheet.write(pos, 4, taxonomy.group(1))
+            return 'replace successful !!!!!!!!!!!'
+            break
+        cnt += 1
+    return 'replace faile !!!!!!!!!!!!'
 
 def login(url,useName,password):
     #--------------------------login------------------------
@@ -100,9 +125,29 @@ def login(url,useName,password):
             sheet.write(i+1, 3, doneData.get('result_similarity','None'))
             sheet.write(i+1, 4, doneData.get('result_taxonomy','None'))
             sheet.write(i+1, 5, doneData.get('strain_length','None'))
+            if re.search("_s", doneData.get('result_taxon','None'), re.S) != None:
+                print('find *_s +++++++++++++++ replace',doneData.get('result_taxon','None'))
+                getID = {
+                    'id': doneData.get('strain_uid'),
+                }
+                s = session.get("https://www.ezbiocloud.net/identify/result", params = getID, verify = False)
+                print(replace_s(i+1, sheet, s.text))
     NowTime = time.time()
     str(NowTime)
     book.save(rootdir+str(NowTime)+'.xls')
 
+#---------------get Account-----------------
+Account = "RDJ5231@163.com"
+Password = "5231RDJ"
+f = open('account.txt', 'r', encoding='UTF-8')
+Account_ifm = f.read()
+print(Account_ifm)
+File_Account = re.search("\"Account\":\"(.*?)\"", Account_ifm, re.S)
+File_Password = re.search("\"Password\":\"(.*?)\"", Account_ifm, re.S)
+if File_Account != None and File_Password != None:
+    Account = File_Account.group(1)
+    Password = File_Password.group(1)
+
+print(Account, Password)
 myurl = "https://www.ezbiocloud.net/loginNew"
-login(myurl,"RDJ5231@163.com","5231RDJ")
+login(myurl, Account, Password)

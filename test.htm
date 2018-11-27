@@ -1,0 +1,1208 @@
+35f4
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Identify prokaryotes using EzBioCloud's proven similarity-based search engine supported by ChunLab's curated 16S rRNA sequence database.">
+	<title>Ezbiocloud.net</title>
+	
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keyword" content="EzTaxon, bacterial identification, ANI calculator, 16S database, orthoANI, qiime, bacterial diversity, genome database">
+
+<!-- <meta id="vp" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no"> -->
+<meta property="fb:app_id" content="1499921316721787" />
+<meta property="og:url" content="http://www.ezbiocloud.net/" />
+<meta property="og:title" content="EzBioCloud.net | Search about Bacteria or Archaea" />
+<meta property="og:description" content="EzBioCloud.net is cloud-based, Big Data Analysis platform for microbiology and infectious disease research. We provide comprehensive resources for bacterial identification, genomics and microbiome." />
+<meta property="og:image" content="http://www.ezbiocloud.net/images/mobile/ezbiocloud_og_img.jpg" />
+
+<link rel="shortcut icon" href="../images/icon/favicon_ezbio.ico">
+
+<!-- font -->
+<link rel="stylesheet" type="text/css" href="../fonts/roboto/style.css?v=2016121504" />
+<link rel="stylesheet" type="text/css" href="../fonts/common/style.css?v=2017012301" />
+
+<!-- App CSS -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/core.css?v=2016122801"/>
+<link rel="stylesheet" type="text/css" href="../css/components.css"/>
+<link rel="stylesheet" type="text/css" href="../css/icons.css" />
+<link rel="stylesheet" type="text/css" href="../css/pages.css"/>
+<link rel="stylesheet" type="text/css" href="../css/tipso.css" />
+<link rel="stylesheet" type="text/css" href="../js/lib/toastr/toastr.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/menu.css?v=2016122801"/>
+<link rel="stylesheet" type="text/css" href="../css/responsive.css?v=20"/>
+<link rel="stylesheet" type="text/css" href="../css/common.css?v=2017071701"/>
+<link rel="stylesheet" type="text/css" href="../css/myDataDashboard.css?v=2016121401" />
+<!-- DataTables -->
+<link rel="stylesheet" type="text/css" href="../js/lib/datatables/jquery.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="../js/lib/datatables/select.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="../js/lib/datatables/responsive.bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="../js/lib/datatables/scroller.bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="../js/lib/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.min.css" />
+<link rel="stylesheet" type="text/css" href="../js/lib/EasyAutocomplete-1.3.5/easy-autocomplete.min.css" />
+<link rel="stylesheet" type="text/css" href="../js/lib/EasyAutocomplete-1.3.5/easy-autocomplete.themes.min.css"> 
+
+<link rel="stylesheet" type="text/css" href="../css/common/style.css?v=2018100201" />
+<link rel="stylesheet" type="text/css" href="../css/common/base.css?v=2017082901" />
+<link rel="stylesheet" type="text/css" href="../css/common/media.css?v=2018100401" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-100697569-3', 'auto');
+  ga('send', 'pageview');
+</script>
+	<link rel="stylesheet" type="text/css"href="../js/lib/jQuery-File-Upload-9.12.5/css/jquery.fileupload.css" />
+	<link rel="stylesheet" type="text/css"href="../js/lib/jQuery-File-Upload-9.12.5/css/jquery.fileupload-ui.css" />
+	<link rel="stylesheet" type="text/css"href="../css/view_identify.css?v=2016123001" />
+	
+	<link rel="stylesheet" type="text/css"href="../css/page/identify.css?v=2017010201" />
+</head>
+<body>
+	
+<!-- Navigation Bar-->
+
+<header id="topnav" class="zIndex1" data-spy="affix" data-offset-top="60">
+	<div id="my_logo" class="topbar-main">
+        <div class="">
+
+            <!-- LOGO -->
+			<div class="topbar-left">
+				<a href="/" class="logo m_side30 p_right10"><span><img src="/images/logo/logo_ez.png" id="logoImg"></span></a>
+			    <div class="navbar-custom">
+					<div id="navigation">
+						<!-- Navigation Menu-->
+		                <a class="btn btn-trans sm_top_lt_menu sm_block">
+		                	<i class="ham_top move3"></i>
+		                	<i class="ham_mid move3"></i>
+		                	<i class="ham_bot move3"></i>
+		                </a>
+		                <div class="sm_menu_expand move3">
+	                    	<div class="row m_auto sm_m_top50">       
+	
+				                <!-- Navigation Menu-->
+				                <ul id="selectMenu" class="navigation-menu">
+									<li id="menuDataSet" class="menuRootOnly" data-main-menu="dashboard">
+										<a class="block" href="/dashboard"><span> DASHBOARD </span> </a>
+									</li>
+									<li class="menuRootOnly" data-main-menu="identify">
+										<a class="block" href="/identify"><span id="menuItemIdentify"> IDENTIFY </span></a>
+									</li>
+									<!-- <li class="menuRootOnly" data-main-menu="taxonomy">
+										<a class="block" href="/taxonomy"><span> TAXONOMY </span></a>
+									</li> -->
+									<li class="menuRootOnly" data-main-menu="tools">
+										<a class="block" href="/tools"><span> TOOLS </span></a>
+									</li>
+									<li class="menuRootOnly" data-main-menu="resources">
+										<a class="block" href="/resources"><span> RESOURCES </span></a>
+									</li>
+									<li class="menuRootOnly" data-main-menu="how_to_cite">
+										<a class="block" href="/how_to_cite"><span> HOW TO CITE </span></a>
+									</li>
+									<li id="menuDataSet" class="menuRootOnly" data-main-menu="about"> <!-- active -->
+										<a class="block" href="/about"><span> ABOUT </span> </a>
+				                    </li>			                    
+	
+								</ul>
+				                <!-- End navigation menu  -->
+				                
+								<ul id="selectRightMenu" class="list_top_rt_nav list_default list_relative list_left pull-right m_right10">
+									<li><a href="https://help.ezbiocloud.net/" class="btn btn-trans top_ex_menu color_74" target="_blank"><span>HELP CENTER</span></a></li>
+									<li>
+										<div class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+											<button type="button" class="btn btn-trans top_ex_menu">SUPPORT</button>
+										</div>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="/news" class="color_primary"><span>News and Update</span></a></li>
+											<li id="viewFaqLink" class="menuRootOnly" data-main-menu="faq"><a href="/faq" class="color_primary"><span>FAQ</span></a></li>
+										</ul>
+				                    </li>
+									<li>
+										<div class="btn btn-trans btn-top-search sm_none"><i class="search_on common-magnifier"></i><i class="search_off common-cross hide"></i></div>
+										<div class="top_search_wrap move3 po_relative" style="display: none"> 
+											<div class="top_search_move">
+					                     		<input type="text" class="form-control" id="searchInputsmall" placeholder="Search"/>
+					                     		<a class="po_absolute lt0 top0 btn btn-trans m_top5 color_a8" href="javascript:void(0)" onclick="ezsearch.search();"><i class="common-magnifier"></i></a>
+											</div>
+										</div>
+									</li>
+									<li data-main-menu="taxonomy">
+										<a class="btn btn-trans btn-menu-modal" href="/taxonomy"><i class="common-tree"></i></a>
+									</li>
+									
+									<li>
+										<div id="userLoginDiv" class="btn btn-top-login" style="display:none;">Log In</div>
+									</li>
+									<li>
+										<div id="personDiv" class="dropdown-toggle btn-top-user btn btn-trans" data-toggle="dropdown" aria-expanded="true" style="display:none;">
+											<i class="common-user"></i>
+											<div class="top_user_profile" style="display:none;"><img class="top_user_profile_img" id="profileImg" src="/images/icon/icon_profile.png"></div>
+										</div>
+										<ul id="selectMyMenu" class="dropdown-menu dropdown-menu-right" role="menu">
+											<li><a href="/myinfoEdit?from=ezbiocloud"><i class="common-info m_right5"></i> <span>My information</span></a></li>
+											
+											<li onclick="calllogout()" style="cursor:pointer;"><a><i class="common-lock-open m_right5"></i> <span >Log out</span></a></li>
+										</ul>
+									</li> 
+								 </ul>
+	 						</div>
+	 					</div>
+					</div>
+				</div>   
+			</div>
+			<!-- End Logo container-->
+        </div>
+    </div>
+    
+
+	<!-- <div class="row mint-bar"></div> -->
+</header>
+<!-- <div class="p_top20"></div> -->
+<!-- End Navigation Bar-->	
+
+<div id="screenLoading" class="row screen_loading_view">
+	<div class="col-lg-12">
+		<div class="screen_loading">
+			<div class="loading">
+			  <div class="loading-bar"></div>
+			  <div class="loading-bar"></div>
+			  <div class="loading-bar"></div>
+			  <div class="loading-bar"></div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+<script>
+function calllogout(){
+	window.location="../logout";
+}
+</script>
+	<div class="wrap_body">
+    
+		<div class="container min_content">
+			
+			<div id="resultNoAuth" class="row" style="display:none;">
+				<div class="col-xs-12" style="text-align:center;">
+					<h2 class="page-title p_top100">You are not authorized to view this information.</h2>
+				</div>
+			</div>
+			
+			<div id="resultMain" class="row" style="display:none;">
+				<div class="col-xs-12">
+					<div id="clipMessage" class="cl16s-clipMessage" style="z-index:100;position:fixed;width:65px;border-radius: 50px;height:63px;top:30%;left:50%;margin-left:0px;padding-top:10px;background-color:rgb(57, 201, 210);color:white;text-align:center;font-weight:700;display:none;">
+					    <i class="zmdi zmdi-check m-r-5" style="padding-left: 6px;"></i> 
+					    <div style="padding-left: 3px;">Copy</div>
+					</div>
+					<!-- Modal content-->
+														</div>
+													</div>
+												</div>
+												<div class="white_box_split">
+													<h4 class="title">Length</h4>
+													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10">
+														<div>
+															<span id="view_strainSeqLen"></span> bp 
+															<button id="seqImg" class="btn btn-primary btn-xs" type="button" style="margin-left:10px;" data-clipboard-text="huhwut"><i class="zmdi zmdi-square-right m-r-5"></i>Sequence</button>
+														</div>
+													</div>
+												</div>
+												<div id="strainOrientationBox" class="white_box_split" style="display:none;">
+													<h4 class="title">Orientation</h4>
+													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10">
+														<div class="hover_tip_toggle po_relative">
+															<span id="view_strainOrientation"></span>
+															<span id="strainOrientationTip" class="tip_top tip_right" style="display: none;"></span>
+														</div>
+													</div>
+												</div>
+												<div class="white_box_split">
+													<h4 class="title">Completeness</h4>
+													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10">
+														<div class="completeness-component"><div id="completenessScore"></div></div>
+														<div class="completeness-component diagram-container">
+															<div class="row m_auto" id="completenessDiagram" style="display:none;">
+																<div id="leadLength" class="diagram-part empty-fill pull-left"></div>
+																<div id="matchLength" class="diagram-part blue-fill pull-left">
+																	<div class="completeness-component diagram-number-position m_top20"><div id="spanRange"></div></div>
+																</div>
+																<div id="lagLength" class="diagram-part empty-fill pull-left"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="white_box_split">
+													<h4 class="title">Database ver.</h4>
+													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10">
+														<div class="">
+															<span id="view_dbVersion"></span>
+
+2966
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								
+<!-- 								<div class="col-xs-12 m_bot30"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-xs-12"> -->
+<!-- 											<h4 class="border_title border_title_purple m_top0" style="display:inline-block;">Metadata</h4> -->
+<!-- 											<button id="editMeta" class="btn btn-sm btn-primary m_left10"><i class="common-pen-angled2"></i> Edit</button> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-xs-12 m_bot15"> -->
+<!-- 											<div class="white_box p_side20 p_tb30"> -->
+<!-- 												<div class="row"> -->
+<!-- 												<div class="col-xs-6"> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Culture medium</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div class=""> -->
+<!-- 															<span id="view_cultureMedium"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Culture temperature</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div> -->
+<!-- 															<span id="view_cultureTemp"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Isolation source</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div> -->
+<!-- 															<span id="view_isolationSrc"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Isolation year</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div> -->
+<!-- 															<span id="view_isolationYear"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Geographical origin</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div class=""> -->
+<!-- 															<span id="view_geoOrigin"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Coordinates</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div class=""> -->
+<!-- 															<span id="view_coordinates"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Storage location</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div class=""> -->
+<!-- 															<span id="view_storageLoc"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="col-xs-6"> -->
+<!-- 													<div class="panel panel-warning"> -->
+<!-- 														<div class="panel-heading"> -->
+<!-- 													    	<h4 class="panel-title">Notes</h4> -->
+<!-- 														</div> -->
+<!-- 														<div class="panel-body"> -->
+<!-- 															<span id="view_metaNotes"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+								
+								
+<!-- 								<div class="col-xs-12 m_bot30"> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-xs-12"> -->
+<!-- 											<h4 class="border_title border_title_purple m_top0" style="display:inline-block;">Top hit information</h4> -->
+<!-- 											<div class="btn-group btn-group-primary m_left10 m_right10" data-toggle="buttons"> -->
+<!-- 												<label class="btn btn-sm btn-primary hover_tip min_w100 active">  -->
+<!-- 													<input type="radio" name="topHits" id="ebcTopHit" autocomplete="off" checked=""> EzBioCloud 16S DB -->
+<!-- 												</label>  -->
+<!-- 												<label class="btn btn-sm btn-primary hover_tip min_w100">  -->
+<!-- 													<input type="radio" name="topHits" id="selfTopHit" autocomplete="off"> Custom 16S DB -->
+<!-- 												</label> -->
+<!-- 											</div> -->
+<!-- 											<span id="identicalTopHits" class="text-info" style="display:none;">Both top hits are identical.</span> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="row"> -->
+<!-- 										<div class="col-xs-12 m_bot15"> -->
+<!-- 											<div class="white_box p_side20 p_tb30 m_bot15"> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Formatted name</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div class=""> -->
+<!-- 															<span id="view_topHitName"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Similarity</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div> -->
+<!-- 															<span id="view_topHitSimilarity"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 												<div class="white_box_split"> -->
+<!-- 													<h4 class="title">Taxonomy</h4> -->
+<!-- 													<div class="white_box_ex white_box_top white_box_num color_74 m_bot10"> -->
+<!-- 														<div class=""> -->
+<!-- 															<span id="view_topHitTaxonomy"></span> -->
+<!-- 														</div> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 											<div class="row"> -->
+<!-- 												<div class="col-xs-12" style="text-align:center;"> -->
+<!-- 													<button id="viewHistory" class="btn btn-lg btn-primary cl16s-button">View ID History</button> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+								
+								
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="col-xs-12">
+											<h4 class="border_title border_title_purple m_top0">List of hits from EzBioCloud 16S database</h4>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="white_box over_view p_side20 p_tb20">
+												<div class="white_box_ex white_box_top">
+													<div class="row">
+														<div class="col-md-12 col-lg-3">
+															<div class="font18 bold color_74 p_top5 sm_p_bot10">Select hits by database</div>
+														</div>
+														<div class="col-md-12 col-lg-9">
+															<div class="row m_auto md_pull_left">
+																<div id="resultBtnToolbar" class="btn-toolbar pull-right" role="toolbar">
+																	<button id="makeExcelFile" type="button" class="btn btn-default"><i class="common-cloud-download"></i> Excel</button>
+																	<button id="makeFastaFile" type="button" class="btn btn-default"><i class="common-cloud-download"></i> FASTA</button>
+			<!-- 														<button id="makeEzEditorFile" type="button" class="btn btn-default"><i class="common-cloud-download"></i> EzEditor</button> -->
+																	<button id="makeEzEditor2File" type="button" class="btn btn-default"><i class="common-cloud-download"></i> EzEditor2</button>
+																	<div class="btn-group">
+			 															<button id="hitsDropdownBtn" type="button" class="btn btn-default dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+			 																<i class="glyphicon glyphicon-th icon-th"></i>
+			 																<span class="caret"></span>
+			 															</button>
+																		<ul id="hitsColumnDropdown" class="dropdown-menu">
+																		</ul>
+																	</div>
+																</div>
+																<div class="btn-group btn-group-primary pull-right m_right10" data-toggle="buttons">
+																	<label class="btn btn-primary hover_tip min_w150 active"> 
+																		<input type="radio" name="options" id="option1" autocomplete="off" checked> All
+																		<span id="allTopHit" class="tip_top" style="display: none;"></span> 
+																	</label> 
+																	<label class="btn btn-primary hover_tip min_w150"> 
+																		<input type="radio" name="options" id="option2" autocomplete="off"> Valid names only
+																		<span id="validTopHit" class="tip_top" style="display: none;"></span>
+																	</label>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="white_box_ex white_box_top p_bot0">
+													<table id="allHitsTable"></table>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+    	</div>
+	</div>
+
+
+
+<!-- core -->
+<script type="text/javascript" src="../js/theme/modernizr.min.js"></script>
+<script type="text/javascript" src="../js/lib/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="../js/lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/theme/bootstrap.min.js"></script>
+
+<!-- ui -->
+<script type="text/javascript" src="../js/common/ui.js?v=2017042801"></script>
+
+<!-- plugin -->
+<script type="text/javascript" src="../js/theme/jquery.slimscroll.js"></script>
+<script type="text/javascript" src="../js/theme/jquery.blockUI.js"></script>
+<script type="text/javascript" src="../js/the
+2000
+me/jquery.nicescroll.js"></script>
+<script type="text/javascript" src="../js/theme/jquery.scrollTo.min.js"></script>
+<script type="text/javascript" src="../js/lib/malihu-custom-scrollbar-plugin-3.1.5/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="../js/view_search_min.js?v=2016121401"></script>
+<script type="text/javascript" src="../js/lib/toastr/toastr.min.js?v=2016121401"></script>
+<script type="text/javascript" src="../js/lib/jQueryCountdown/countdown.js"></script>
+<script type="text/javascript" src="../js/tipso.min.js"></script>
+<script type="text/javascript" src="../js/common.js?v=2018050401"></script>
+<script type="text/javascript" src="../js/lib/EasyAutocomplete-1.3.5/jquery.easy-autocomplete.min-custom.js?v=2016110803"></script>
+
+<!-- Datatables-->
+<script src="../js/lib/datatables/jquery.dataTables.min.js"></script>
+<script src="../js/lib/datatables/dataTables.bootstrap.js"></script>
+<script src="../js/lib/datatables/dataTables.responsive.min.js"></script>
+<script src="../js/lib/datatables/responsive.bootstrap.min.js"></script>
+<script src="../js/lib/datatables/dataTables.scroller.min.js"></script>
+<script src="../js/lib/datatables/dataTables.select.min.js"></script>
+
+
+<script src="../js/lib/amcharts/amcharts.js" type="text/javascript"></script>
+<script src="../js/lib/amcharts/serial.js" type="text/javascript"></script>	
+
+
+<!-- common modals part-->
+
+
+<div id="modalTermOfUseCheck" data-puid="0" class="modal fade p_top100" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content p-0 b-0">
+            <div class="panel panel-color panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">EzBioCloud.net</h3>
+                </div>
+                
+                <div class="panel-body read_input_label">
+					<div class="col-lg-12">
+                   		<div class="row p_bottom20">
+                   			<div class="col-xs-12" id="termOfUseCheckContent" style="height:250px;padding-left:20px;">
+                   			
+                            
+		                        <p class="policyItem"></p>
+	                            <p>안녕하세요.</p>
+	                            <p class="p_bottom5">서비스를 위해 선택하신  소속을 (affiliation) 확인 부탁드립니다.</p>
+	                            
+<div id="affiliationRadioView" class="p_bottom5">
+	                            <div class="radio radio-info radio-inline">
+                                	<input id="affiliationRadioAcademy" class="affiliationRadio" type="radio" value="Academy" name="affiliationRadio">
+                                	<label for="affiliationRadioAcademy">  Academy  </label>
+                            	</div>
+	                            <div class="radio radio-info radio-inline">
+                                	<input id="affiliationRadioNonProfit" class="affiliationRadio" type="radio" value="Non-Profit" name="affiliationRadio">
+                                	<label for="affiliationRadioNonProfit">  Non-Profit  </label>
+                            	</div>
+	                            <div class="radio radio-info radio-inline">
+                                	<input id="affiliationRadioProfit" class="affiliationRadio" type="radio" value="Profit" name="affiliationRadio">
+                                	<label for="affiliationRadioProfit">  Profit  </label>
+                            	</div>
+</div>	                       
+								<div style="display:none;">Academy & Non-Profit 소속은 서비스를 무료로 사용 할 수 있습니다.</div>     
+	                            <p id="reqAffiliationMsg" style="color:red; display:none;">* 적어도 affiliation 항목 한개를 선택해주십시오.</p>
+	                            <hr/>
+	                            
+	                            <p class="p_bottom5"><a href="/term_of_use" target="_termOfuse">EzBioCloud 서비스 이용 약관</a>을 준수 할 것을 동의합니다.</p>
+	                            
+	                            <div class="radio radio-info radio-inline">
+                                	<input type="radio" id="termOfUseRadioYes" value="yes" name="termOfUseRadio">
+                                	<label for="termOfUseRadioYes">  Yes  </label>
+                            	</div>
+	                            <div class="radio radio-inline">
+                                	<input type="radio" id="termOfUseRadioNo" value="no" name="termOfUseRadio" checked="">
+                                	<label for="termOfUseRadioNo">  No  </label>
+                            	</div>
+                            	
+                            	<p id="termOfUseAgree" class="p_top70 disable-color" style="float:right; padding-right:30px;">동의하고 계속하기</p>
+                                 
+							</div>									
+                   		</div>					
+					</div>  
+				</div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+
+	$(function() {
+
+		/*
+		$.ajax({ 
+			type : 'POST', 
+			url : '/get_termOfUse', 
+			async : false,
+			success : function(data) {
+				console.info("get_termOfUse");
+				console.info ( data );
+				var returnObj = jQuery.parseJSON(data);
+				console.info(returnObj);
+
+			}, error : function(err) {
+				console.info(err);
+
+			} 
+		});
+		*/
+
+		$('input:radio[name=termOfUseRadio]').change(function() {
+			var status = $('input:radio[name=termOfUseRadio]:checked').val();
+			if ( status == "yes" ) {
+				$("#termOfUseAgree").removeClass("disable-color").addClass("active-color").addClass("pointer");
+			}
+			else {
+				$("#termOfUseAgree").addClass("disable-color").removeClass("active-color").removeClass("pointer");
+			}
+		});
+		
+		$('input:radio[name=affiliationRadio]').change(function() {
+			$("#reqAffiliationMsg").hide();
+			
+		});
+		
+		$("#termOfUseAgree").click ( function () {
+			if ( $("#termOfUseAgree").hasClass("active-color") ) {
+				var selectVal = $('input:radio[name=affiliationRadio]:checked').val();
+				if ( !selectVal ) {
+					$("#reqAffiliationMsg").show();
+				}
+				else {
+					$("#modalTermOfUseCheck").modal("hide");
+					console.info("modalLogin.userEmail : " + modalLogin.userEmail + " / modalLogin.userUid : " + modalLogin.userUid);
+					setTermOfUseUser(selectVal);
+				}
+			}
+		});
+		
+		//setTermOfUseUser();
+	});
+	
+	// 정책 동의 
+	// int userUid, int termUid, String email
+	function setTermOfUseUser ( selectVal ) {
+		$("#screenLoading").show();
+		$.ajax({ 
+			type : 'POST', 
+			url : '/set_termOfUseUser',  
+			data : { 'userUid' : modalLogin.userUid, 'email' : modalLogin.userEmail, 'option' : selectVal },
+			async : false,
+			success : function(data) {
+				var returnObj = jQuery.parseJSON(data);
+				window.location= modalLogin.fromUrl;
+			}, 
+			error : function(err) {
+				console.info(err);
+
+			},
+			complete : function () {
+				$("#screenLoading").hide();
+			}
+		});
+	}
+	
+</script>
+
+
+
+<div id="modalInfo"class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-mini">
+    <div class="modal-content p-0 b-0" style="border-radius:6px;margin-top:110px;padding:10px;">
+     <div class="panel panel-color panel-primary">
+      <div class="panel-heading modal-titlebar-color info">
+          <button type="button" class="close m-t-5 close-white" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="modalInfoTitle" class="panel-title">Info</h3>
+      </div>
+      <div class="modal-body" style="text-align:center;padding:20px 0 15px 0;">
+        <p id="modalInfoMessage"></p>
+      </div>
+      <div class="modal-footer" style="text-align:center; border-top:none;padding:0 0 10px 0; ">
+        <button id="modalInfoBtn" type="button" class="btn btn-inverse btn-sm m-b-5 m-r-10" data-dismiss="modal" >OK</button>
+      </div
+10f2
+>
+    </div>
+   </div>
+  </div>
+</div>
+
+<div id="modalInfoLarge"class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-0 b-0" style="border-radius:6px;margin-top:110px;padding:10px;">
+     <div class="panel panel-color panel-primary">
+      <div class="panel-heading modal-titlebar-color info">
+          <button type="button" class="close m-t-5 close-white" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="modalInfoTitleLarge" class="panel-title">Info</h3>
+      </div>
+      <div class="modal-body" style="text-align:center;padding:20px 0 15px 0;">
+        <p id="modalInfoMessageLarge"></p>
+      </div>
+      <div class="modal-footer" style="text-align:center; border-top:none;padding:0 0 10px 0; ">
+        <button id="modalInfoBtnLarge" type="button" class="btn btn-inverse btn-sm m-b-5 m-r-10" data-dismiss="modal" >OK</button>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
+
+
+<div id="modalInfoNotClose" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-mini">
+		<div class="modal-content p-0 b-0" style="border-radius: 6px; margin-top: 110px; padding: 10px;">
+			<div class="panel panel-color panel-primary">
+				<div class="panel-heading modal-titlebar-color info">
+					<h3 id="modalInfoNotCloseTitle" class="panel-title">Info</h3>
+				</div>
+				<div class="modal-body"
+					style="text-align: center; padding: 20px 0 15px 0;">
+					<p id="modalInfoNotCloseMessage"></p>
+				</div>
+				<div class="modal-footer"
+					style="text-align: center; border-top: none; padding: 0 0 10px 0;">
+					<button id="modalInfoNotCloseBtn" type="button"
+						class="btn btn-inverse btn-sm m-b-5 m-r-10">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalNoticeNotClose" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog modal-mini">
+		<div class="modal-content p-0 b-0" style="border-radius: 6px; margin-top: 110px; padding: 10px;">
+			<div class="panel panel-color panel-primary">
+				<div class="panel-heading modal-titlebar-color info">
+					<h3 id="modalNoticeNotCloseTitle" class="panel-title">Server Maintenance Notice</h3>
+				</div>
+				<div class="modal-body" style="text-align: center; padding: 20px 15px 15px 15px;">
+					<p id="modalNoticeNotCloseMessage"></p>
+				</div>
+				<div class="modal-footer" style="text-align: center; border-top: none; padding: 0 0 10px 0;">
+					<button id="modalNoticeNotCloseBtn" type="button" class="btn btn-inverse btn-sm m-b-5 m-r-10">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="modalInfoWarning"class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-mini">
+		<div class="modal-content p-0 b-0" style="border-radius:6px;margin-top:110px;padding:10px;">
+			<div class="panel panel-color panel-primary">
+				<div class="panel-heading modal-titlebar-color warning">
+					<button type="button" class="close m-t-5 close-white" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 id="modalInfoWarningTitle" class="panel-title">Warning</h3>
+				</div>
+				<div class="modal-body text-center" style="padding:20px 0 15px 0;">
+					<p id="modalInfoWarningMessage"></p>
+				</div>
+				<div class="modal-footer" style="text-align:center; border-top:none;padding:0 0 10px 0; ">
+					<button type="button" class="btn btn-inverse btn-sm m-b-5 m-r-10" data-dismiss="modal" >OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalInfoError"class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-mini">
+		<div class="modal-content p-0 b-0" style="border-radius:6px;margin-top:110px;padding:10px;">
+			<div class="panel panel-color panel-primary">
+				<div class="panel-heading modal-titlebar-color info">
+					<button type="button" class="close m-t-5 close-white" data-dismiss="modal" aria-hidden="true">×</button>
+					<h3 class="panel-title">Error</h3>
+				</div>
+				<div class="error_body modal-body text-center" style="padding:20px 0 15px 0;">
+					<p id="modalInfoErrorMessage"></p>
+				</div>
+				<div class="modal-footer" style="text-align:center; border-
+3c40
+top:none;padding:0 0 10px 0; ">
+					<button type="button" class="btn btn-inverse btn-sm m-b-5 m-r-10" data-dismiss="modal" >OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="modalConfirm" data-puid="0" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+	            <h4 class="modal-title info_title m_bot20 text-center" id="">
+	            <i class="pe-lg pe-7s-attention no-float"></i></h4>
+				
+				<div class="error_body text-center font14">
+					<span id="confirmBodyTxt">DELETE</span>
+				</div>
+			</div>
+            <div class="modal-footer">
+                <button id="modalConfirmDeleteCancelBtn" type="button" class="btn btn-default wid_49 pull-left" data-dismiss="modal">Cancel</button>
+                <a id="modalConfirmDeleteBtn" class="btn btn-danger btn-ok wid_45 pull-right">OK</a>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+<div id="modalConfirmSizeMd" data-puid="0" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body">
+	            <h4 class="modal-title info_title m_bot20 text-center" id="">
+	            <i class="pe-lg pe-7s-attention no-float"></i></h4>
+				
+				<div class="error_body text-center font14">
+					<span id="modalConfirmSizeMdTxt">선택</span>
+				</div>
+			</div>
+            <div class="modal-footer">
+                <button id="modalConfirmSizeMdRight" type="button" class="btn btn-info wid_49 pull-left" data-dismiss="modal">선택01</button>
+                <a id="modalConfirmSizeMdLeft" class="btn btn-purple btn-ok wid_49 pull-right" data-dismiss="modal">선택02</a>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->
+
+
+
+
+<style>
+@media  (max-width: 1320px ){
+     .imgSize { width: 95%;} 
+}
+
+</style>
+<div id="modalSiteDashboard" class="site-change-modal-dackgray modal fade bs-example-modal-lg in" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none; padding-right: 17px;">
+    <div class="modal-dialog modal-sites">
+        <div class="modal-content site-change-modal">
+            <div class="modal-header no_border">
+            
+                <h4 class="modal-title" id="myLargeModalLabel">
+                	<img class="pointer" data-dismiss="modal" aria-hidden="true" src="../images/icon/icon_Close.png" style="float: right;"/> 
+                </h4>
+            </div>
+            <div class="modal-body">
+            
+				<div class="row text-center">
+					<div class="col-xs-12 col-sm-4">
+						<a href="http://cg.ezbiocloud.net/" target="_cg"><img class="pointer imgSize" src="../images/sites/sum_cg.png"/></a>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<a href="http://mydata.ezbiocloud.net/" target="_mydata"><img class="pointer imgSize" src="../images/sites/sum_md.png"/></a>
+						
+					</div>
+					<div class="col-xs-12 col-sm-4">
+						<a href="http://chunlab.com/" target="_chunlab"><img class="pointer imgSize" src="../images/sites/sum_cl.png"/></a>
+					</div>
+				</div>
+				<div class="row p_top70 text-center">
+					<div class="col-xs-12 col-sm-4">
+						<a href="http://www.ezbiocloud.net/" target="_ezbio"><img class="pointer imgSize" src="../images/sites/sum_cg-06.png"/></a>
+					</div>
+					<div class="col-xs-12 col-sm-4">
+					
+					</div>
+					<div class="col-xs-12 col-sm-4">
+					</div>
+				</div>	            
+            
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+                           
+
+  
+
+
+<div class="modal_custom modal_login modal fade" id="modalLogin" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-login" role="document">
+		<div class="modal-content p_all0">
+			<div class="modal-header">
+				<button id="modalLoginClose" type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="i_sm common-cross"></i></button>
+				<h4 class="modal_title m_tb0">Log in</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12">
+						<div id="loginModalHeaderMsgView" class="row" style="display: none;">
+							<div class="well col-xs-12">
+								<div class="p_all5">You must be signed in to access this feature.</div>
+								<!-- 해당 기능은 로그인이 필요합니다. -->
+							</div>
+						</div>
+						<div class="p_bot20 po_relative" id="emailDiv">
+							<input type="text" id="emailVal" class="form-control p_left40" placeholder="Email" autofocus> 
+							<div class="po_absolute lt0 top0 p_all10"><i class="i_xs common-mail-envelope-closed"></i></div>
+							<div id="errorEmail" class="loginErrorMsgs"></div>
+						</div>
+						<div class="p_bot20 po_relative" id="passwordDiv">
+							<input type="password" id="passwordVal" class="form-control p_left40" placeholder="Password"> 
+							<div class="po_absolute lt0 top0 p_all10"><i class="i_xs common-lock"></i></div>
+							<div id="errorPassword" class="loginErrorMsgs"></div>
+						</div>
+						<div class="text-right">
+							<button id="loginBtn" type="submit" class="btn btn-emerald btn-lg wid_all">Log in</button>
+							<button id="sendValMailBtn" type="submit" class="btn btn-emerald btn-lg wid_all" style="display: none;">Send Validation Email</button>
+							<div id="errorValidMail" class="loginErrorMsgs"></div>
+						</div>
+						<div class="row text-right">
+							<div class="col-xs-12">
+								<a class="font12" href="/term_of_use">Terms of use</a> / 
+								<a class="font12" href="/privacy_policy">Privacy policy</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="row">
+					<div class="col-xs-6 text-left p_right0 font12">
+						<a href="/forgotPassword?from=ezbiocloud">Forgot your password?</a>
+					</div>
+					<div class="col-xs-6 text-right p_left0 font12">					
+						Don't have an account? <a href="/signup?from=ezbiocloud">Click here</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="../js/lib/jquery.cookie.js"></script>
+<script src="../js/modalLogin.js?v=2018052501"></script>
+
+
+
+<script type="text/javascript">
+	$(function() {
+		$("#screenLoading").hide();
+		footerUi.init(); 
+		commonSearch.init();
+		var result = '{"uid":34472,"check":"N","email":"RDJ5231@163.com","userPhoto":null,"userName":"Giorgio do Jeffrey","country":"China"}';
+		if ( result ) {
+			result = jQuery.parseJSON(result);
+			common.setUserInfo(result);
+		}
+		else {
+			common.loginDivShow();
+		}
+		//common.setSystemNoti(2016,11,30,11,40, 10);//  YYYY,MM,DD,HH,mm, stopTime MM은 12라면 11 ( -1 해야함 )
+ 		//common.setSystemNoti(2017, 2, 13, 10, 0, 120);// 3월 13일자 DB Update용
+	});
+</script>
+
+
+
+<!-- scroll top btn -->
+<div class="top_btn move3">
+	<a href="#top" class="btn btn-top"><i class="common-arrow-up"></i></a>
+</div>
+
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/vendor/tmpl.min.js" type="text/javascript"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/vendor/load-image.min.js" type="text/javascript"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/vendor/canvas-to-blob.min.js" type="text/javascript"></script>
+
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/vendor/jquery.ui.widget.js"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/jquery.fileupload.js"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/jquery.fileupload-process.js"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/jquery.fileupload-validate.js"></script>
+<script src="../js/lib/jQuery-File-Upload-9.12.5/js/jquery.fileupload-ui.js"></script>
+<!-- jQuery -->
+<!-- <script type="text/javascript" src="../js/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="../js/serializejson.min.js"></script> -->
+
+<!--  Bootstrap  -->
+<!-- <script type="text/javascript" src="../js/bootstrap.min.js"></script> -->
+<!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.override.css" /> -->
+
+<!-- Bootstrap table -->
+<script type="text/javascript" src="../js/bootstrap-table.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-table.css"/>
+
+<!-- Internal libraries -->
+
+
+
+<div id="modalHitAlign" class="modal_custom modal fade" role="dialog" style="display: none">
+	<div class="modal-dialog modal-container">
+		<!-- Modal content-->
+		<div class="modal-content p_all0">
+		
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><i class="i_sm common-cross"></i></button>
+				<h4 class="modal-title">View Alignment</h4>
+			</div> 
+			
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12 m_bot30">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 class="border_title border_title_purple m_top0">Alignment details</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 m_bot15">
+								<div class="white_box p_side20 p_tb30">
+									<div class="white_box_split">
+										<h4 class="title">Query name</h4>
+										<div class="white_box_ex white_box_top white_box_num color_90 m_bot10">
+											<div class="po_relative">
+												<span id="alignQueryName"></span>
+											</div>
+										</div>
+									</div>
+									<div class="white_box_split">
+										<h4 class="title">Hit name</h4>
+										<div class="white_box_ex white_box_top white_box_num color_90 m_bot10">
+											<div class="po_relative">
+												<span id="alignHitName"></span>
+											</div>
+										</div>
+									</div>
+									<div class="white_box_split">
+										<h4 class="title">Similarity</h4>
+										<div class="white_box_ex white_box_top white_box_num color_90 m_bot10">
+											<div class="po_relative">
+												<span id="alignSimilarity"></span>
+											</div>
+										</div>
+									</div>
+									<div class="white_box_split">
+										<h4 class="title">No. of compared</h4>
+										<div class="white_box_ex white_box_top white_box_num color_90 m_bot10">
+											<div class="po_relative">
+												<span id="alignTotalComp"></span>
+											</div>
+										</div>
+									</div>
+									<div class="white_box_split">
+										<h4 class="title">No. of mismatched</h4>
+										<div class="white_box_ex white_box_top white_box_num color_90 m_bot10">
+											<div class="po_relative">
+												<span id="alignDifference"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 class="border_title border_title_purple m_top0">Aligned sequences</h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 m_bot15">
+								<div class="white_box p_side20 p_tb30">
+									<div class="white_box_split">
+										<h4 class="title title_slim">Query sequence</h4>
+										<div class="white_box_ex white_box_slim white_box_num color_90">
+											<div class="po_relative alignScroll alignScrollSlave">
+												<span id="alignSeq1"></span>
+											</div>
+										</div>
+									</div>
+									<div class="white_box_split">
+										<h4 class="title title_slim">          </h4>
+										<div class="white_box_ex white_box_slim white_box_num color_90">
+											<div class="po_relative alignScroll alignScrollSlave">
+												<span id="alignComp"></span>
+											</div>
+										</div>
+									</div>
+									<div class="white_box_split">
+										<h4 class="title title_slim">Hit sequence</h4>
+										<div class="white_box_ex white_box_slim white_box_num color_90">
+											<div class="po_relative alignScroll alignScrollMaster">
+												<span id="alignSeq2"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div id="modalNameEdit" class="modal_custom modal fade" role="dialog" style="display: none">
+	<div class="modal-dialog modal-container">
+		<!-- Modal content -->
+		<div class="modal-content p_all0">
+		
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><i class="i_sm common-cross"></i></button>
+				<h4 class="modal-title">Edit Strain Name</h4>
+			</div>
+			
+			<div class="modal-body">
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<form id="strainNameEditForm" class="">
+							<div class="po_relative form-group col-xs-12 color_74">
+								<label for="strainName">Strain name</label>
+								<input id="strainName" name="strainName" type="text" class="form-control">
+							</div>
+														
+			       			<div id="sequenceNameUniqueReq" class="col-xs-12" role="alert" style="display: none;">
+								<p><span class="text-danger"><strong>Uniqueness Constraint:</strong></span> You already have a strain under the same name.</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="modal-footer">
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="btn-toolbar float-right">
+							<button id="saveName" class="btn btn-success">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</div>
+</div>
+
+
+<footer id="footer" class="footer_wrap footer_color font-whitegray">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="footer_lt">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="logo_footer p_bot5">
+								<img src="/images/logo/logo_ez_gray.png"/>
+							</div>
+							<div class="font-size-small">
+								COPYRIGHT© 2010-2018 ChunLab, Inc.
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer_rt">
+					<div class="row">
+						<div class="col-xs-6 col-sm-4">
+							<div class="p_bot10">Family site</div>
+							<div class="font-size-small pointer"><i class="common-arrow-right m_right5"></i><a href="http://chunlab.com/" target="_chunlab" class="font-whitegray unfocus">www.chunlab.com</a></div>
+							<div class="m_top30">
+								<div class="p_bot10">Service sites</div>
+								<div class="font-size-small pointer"><i class="common-arrow-right m_right5"></i><a href="https://www.bioiplug.com/" target="_bip" class="font-whitegray unfocus">https://www.bioiplug.com</a></div>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<div class="">
+								<ul class="list_default list_p_bot5">
+									<li id=""><a href="/news" class="unfocus block">News and Update</a></li>
+									<li id="viewFaqLink" class="menuRootOnly" data-main-menu="faq"><a href=
+10f0
+"/faq" class="unfocus block">FAQ</a></li>
+									<li><a href="/term_of_use" class="unfocus block">Terms of use</a></li>
+									<li><a href="/privacy_policy" class="unfocus block">Privacy policy</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-4">
+							<div>Contact us</div>
+							<div class="row p_left10 m_top10">
+								<span class="p_right10">
+				                    <a class="font-whitegray unfocus" href="mailto:admin@ezbiocloud.net">
+				    					<i class="i_md common-mail-o"></i>
+				    				</a>
+				                </span>
+								<span class="p_right10">
+				                    <a class="font-whitegray unfocus" href="https://help.ezbiocloud.net/blog" target="_clwordpress">
+				    					<i class="i_md common-wordpress-o"></i>
+				    				</a>
+				                </span>
+				                
+								<span class="p_right10">
+				                    <a class="font-whitegray unfocus" href="https://twitter.com/ezbiocloud" target="_cltwitter">
+				    					<i class="i_md common-twitter-o"></i>
+				    				</a>
+				                </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</footer>
+
+<script type="text/javascript" src="../js/lib/parsleyjs/dist/parsley.min.js"></script>
+<script type="text/javascript" src="../js/serializejson.min.js"></script>
+<script type="text/javascript" src="../js/view_identifyResult.js?v=2018080101"></script>
+<script type="text/javascript" src="../js/simpleFastaParser.js"></script>
+<script type="text/javascript" src="../js/clipboard.js?v=2016112301"></script>
+<script type="text/javascript" src="../js/tipso.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		idResult.init({"orientation":"+","id_name_formatted":"BDAS_s NBRC 102024","db_version":"20181022","id_taxon_name":"BDAS_s","sge_job_id":1213253,"strain_name":"DY37II-CTD18-2Km-B3","id_strain_name":"NBRC 102024","id_taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;BDAS_s;;BDAS01000027","hits":[{"n_mismatch":7,"db_type":"all","db_version":"20181022","taxon_name":"BDAS_s","n_compared":1410,"status":"NOT_TYPE","strain_name":"NBRC 102024","acc":"BDAS01000027","authors":"","completeness":1,"name_formatted":"BDAS_s NBRC 102024","ssurrn_hit_uid":47085787,"similarity":0.9950354609929078,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;BDAS_s;;BDAS01000027","n_genome":0},{"n_mismatch":18,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax jadensis","n_compared":1410,"status":"TYPE","strain_name":"T9","acc":"ARXU01000026","authors":"(Bruns and Berthe-Corti 1999) Fernández-Martínez et al. 2003","completeness":1,"name_formatted":"Alcanivorax jadensis T9(T)","ssurrn_hit_uid":47085788,"similarity":0.9872340425531915,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax jadensis;;ARXU01000026","n_genome":0},{"n_mismatch":30,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax nanhaiticus","n_compared":1410,"status":"TYPE","strain_name":"19-m-6","acc":"KM453740","authors":"Lai et al. 2016","completeness":1,"name_formatted":"Alcanivorax nanhaiticus 19-m-6(T)","ssurrn_hit_uid":47085789,"similarity":0.9787234042553191,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax nanhaiticus;;KM453740","n_genome":0},{"n_mismatch":41,"db_type":"all","db_version":"20181022","taxon_name":"DS989915_s","n_compared":1410,"status":"NOT_TYPE","strain_name":"DG881","acc":"DS989915","authors":"","completeness":1,"name_formatted":"DS989915_s DG881","ssurrn_hit_uid":47085790,"similarity":0.9709219858156029,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;DS989915_s;;DS989915","n_genome":0},{"n_mismatch":42,"db_type":"all","db_version":"20181022","taxon_name":"AXBZ_s","n_compared":1410,"status":"NOT_TYPE","strain_name":"EVN1","acc":"AXBZ01000058","authors":"","completeness":1,"name_formatted":"AXBZ_s EVN1","ssurrn_hit_uid":47085791,"similarity":0.970212765957446
+10f8
+8,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;AXBZ_s;;AXBZ01000058","n_genome":0},{"n_mismatch":43,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax borkumensis","n_compared":1410,"status":"TYPE","strain_name":"SK2","acc":"AM286690","authors":"Yakimov et al. 1998","completeness":1,"name_formatted":"Alcanivorax borkumensis SK2(T)","ssurrn_hit_uid":47085792,"similarity":0.9695035460992908,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax borkumensis;;AM286690","n_genome":0},{"n_mismatch":44,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax hongdengensis","n_compared":1410,"status":"TYPE","strain_name":"A-11-3","acc":"EU438901","authors":"Wu et al. 2009","completeness":1,"name_formatted":"Alcanivorax hongdengensis A-11-3(T)","ssurrn_hit_uid":47085793,"similarity":0.9687943262411347,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax hongdengensis;;EU438901","n_genome":0},{"n_mismatch":67,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax xenomutans","n_compared":1402,"status":"TYPE","strain_name":"JC109","acc":"HE601937","authors":"Rahul et al. 2014","completeness":0.9596719070403281,"name_formatted":"Alcanivorax xenomutans JC109(T)","ssurrn_hit_uid":47085794,"similarity":0.9522111269614836,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax xenomutans;;HE601937","n_genome":0},{"n_mismatch":74,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax dieselolei","n_compared":1410,"status":"TYPE","strain_name":"B-5","acc":"CP003466","authors":"Liu and Shao 2005","completeness":1,"name_formatted":"Alcanivorax dieselolei B-5(T)","ssurrn_hit_uid":47085795,"similarity":0.9475177304964539,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax dieselolei;;CP003466","n_genome":0},{"n_mismatch":74,"db_type":"all","db_version":"20181022","taxon_name":"FM242201_s","n_compared":1409,"status":"NOT_TYPE","strain_name":"123 T0h-oil","acc":"FM242201","authors":"","completeness":1,"name_formatted":"FM242201_s 123 T0h-oil","ssurrn_hit_uid":47085796,"similarity":0.9474804826117814,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;FM242201_s;;FM242201","n_genome":0},{"n_mismatch":81,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax balearicus","n_compared":1410,"status":"TYPE","strain_name":"MACL04","acc":"AY686709","authors":"Rivas et al. 2007","completeness":1,"name_formatted":"Alcanivorax balearicus MACL04(T)","ssurrn_hit_uid":47085797,"similarity":0.9425531914893617,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax balearicus;;AY686709","n_genome":0},{"n_mismatch":83,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax venustensis","n_compared":1408,"status":"TYPE","strain_name":"ISO4","acc":"AF328762","authors":"Fernández-Martínez et al. 2003","completeness":1,"name_formatted":"Alcanivorax venustensis ISO4(T)","ssurrn_hit_uid":47085798,"similarity":0.9410511363636364,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax venustensis;;AF328762","n_genome":0},{"n_mismatch":83,"db_type":"all","db_version":"20181022","taxon_name":"EU735685_s","n_compared":1407,"status":"NOT_TYPE","strain_name":"SN122","acc":"EU735685","authors":"","completeness":1,"name_formatted":"EU735685_s SN122","ssurrn_hit_uid":47085799,"similarity":0.9410092395167022,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;EU735685_s;;EU735685","n_genome":0},{"n_mismatch":89,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax gelatiniphagus","n_compared":1408,"status":"TYPE","strain_name":"MEBiC08158","acc":"JQ937289","authors":"Kwon et al
+10f0
+. 2015","completeness":0.9924863387978142,"name_formatted":"Alcanivorax gelatiniphagus MEBiC08158(T)","ssurrn_hit_uid":47085800,"similarity":0.9367897727272727,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax gelatiniphagus;;JQ937289","n_genome":0},{"n_mismatch":89,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax marinus","n_compared":1407,"status":"TYPE","strain_name":"R8-12","acc":"KC415169","authors":"Lai et al. 2013","completeness":1,"name_formatted":"Alcanivorax marinus R8-12(T)","ssurrn_hit_uid":47085801,"similarity":0.9367448471926084,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax marinus;;KC415169","n_genome":0},{"n_mismatch":95,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax mobilis","n_compared":1410,"status":"TYPE","strain_name":"MT13131","acc":"MF187461","authors":"Yang et al. 2018","completeness":1,"name_formatted":"Alcanivorax mobilis MT13131(T)","ssurrn_hit_uid":47085802,"similarity":0.9326241134751773,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax mobilis;;MF187461","n_genome":0},{"n_mismatch":105,"db_type":"valid","db_version":"20181022","taxon_name":"Alcanivorax pacificus","n_compared":1409,"status":"TYPE","strain_name":"W11-5","acc":"AJGP01000039","authors":"Lai et al. 2011","completeness":1,"name_formatted":"Alcanivorax pacificus W11-5(T)","ssurrn_hit_uid":47085803,"similarity":0.9254790631653655,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;Alcanivorax pacificus;;AJGP01000039","n_genome":0},{"n_mismatch":100,"db_type":"all","db_version":"20181022","taxon_name":"GQ009749_s","n_compared":1332,"status":"NOT_TYPE","strain_name":"nbw779a01c1","acc":"GQ009749","authors":"","completeness":0.9322845417236663,"name_formatted":"GQ009749_s nbw779a01c1","ssurrn_hit_uid":47085804,"similarity":0.924924924924925,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;GQ009749_s;;GQ009749","n_genome":0},{"n_mismatch":113,"db_type":"all","db_version":"20181022","taxon_name":"DQ234131_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"DS047","acc":"DQ234131","authors":"","completeness":1,"name_formatted":"DQ234131_s DS047","ssurrn_hit_uid":47085805,"similarity":0.9197443181818182,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;DQ234131_s;;DQ234131","n_genome":0},{"n_mismatch":118,"db_type":"all","db_version":"20181022","taxon_name":"EU735700_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"SN159","acc":"EU735700","authors":"","completeness":1,"name_formatted":"EU735700_s SN159","ssurrn_hit_uid":47085806,"similarity":0.9161931818181818,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;EU735700_s;;EU735700","n_genome":0},{"n_mismatch":121,"db_type":"all","db_version":"20181022","taxon_name":"FJ152938_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"TX4CB_69","acc":"FJ152938","authors":"","completeness":0.987688098495212,"name_formatted":"FJ152938_s TX4CB_69","ssurrn_hit_uid":47085807,"similarity":0.9140625,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;FJ152938_g;FJ152938_s;;FJ152938","n_genome":0},{"n_mismatch":122,"db_type":"all","db_version":"20181022","taxon_name":"EF583624_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"B114","acc":"EF583624","authors":"","completeness":1,"name_formatted":"EF583624_s B114","ssurrn_hit_uid":47085808,"similarity":0.9133522727272727,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;EF583624_s;;EF583624","n_genome":0},{"n_mismatch":126,"db_type":"all","db_version":"20181022","taxon_name":"FM242290_s","n_compared":1407,"status":"NOT_TYPE","strain_name":"46 T9d-oil","acc":"FM242290","authors":"","completeness":1,"name_form
+21e8
+atted":"FM242290_s 46 T9d-oil","ssurrn_hit_uid":47085809,"similarity":0.9104477611940298,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;FM242290_f;;FM242290_g;FM242290_s;;FM242290","n_genome":0},{"n_mismatch":127,"db_type":"valid","db_version":"20181022","taxon_name":"Mangrovitalea sediminis","n_compared":1408,"status":"TYPE","strain_name":"M11-4","acc":"NTLB01000012","authors":"Liao et al. 2017","completeness":1,"name_formatted":"Mangrovitalea sediminis M11-4(T)","ssurrn_hit_uid":47085810,"similarity":0.9098011363636364,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Mangrovitalea;Mangrovitalea sediminis;;NTLB01000012","n_genome":0},{"n_mismatch":128,"db_type":"all","db_version":"20181022","taxon_name":"AJ318161_s","n_compared":1407,"status":"NOT_TYPE","strain_name":"BIqi1","acc":"AJ318161","authors":"","completeness":1,"name_formatted":"AJ318161_s BIqi1","ssurrn_hit_uid":47085811,"similarity":0.9090262970859986,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;AJ318161_g;AJ318161_s;;AJ318161","n_genome":0},{"n_mismatch":129,"db_type":"all","db_version":"20181022","taxon_name":"HQ697709_s","n_compared":1410,"status":"NOT_TYPE","strain_name":"Bms_MS76","acc":"HQ697709","authors":"","completeness":1,"name_formatted":"HQ697709_s Bms_MS76","ssurrn_hit_uid":47085812,"similarity":0.9085106382978724,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;HQ697709_s;;HQ697709","n_genome":0},{"n_mismatch":130,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter nitratireducens","n_compared":1408,"status":"NOT_TYPE","strain_name":"AK21","acc":"ANIE01000011","authors":"Vaidya et al. 2015","completeness":1,"name_formatted":"Marinobacter nitratireducens AK21","ssurrn_hit_uid":47085813,"similarity":0.9076704545454546,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter nitratireducens;;ANIE01000011","n_genome":0},{"n_mismatch":131,"db_type":"all","db_version":"20181022","taxon_name":"FJ425618_s","n_compared":1401,"status":"NOT_TYPE","strain_name":"MD3.30","acc":"FJ425618","authors":"","completeness":1,"name_formatted":"FJ425618_s MD3.30","ssurrn_hit_uid":47085814,"similarity":0.9064953604568166,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Halieaceae;;EU394576_g;FJ425618_s;;FJ425618","n_genome":0},{"n_mismatch":132,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter zhejiangensis","n_compared":1408,"status":"TYPE","strain_name":"CGMCC 1.7061","acc":"jgi.1058024","authors":"Huo et al. 2008","completeness":1,"name_formatted":"Marinobacter zhejiangensis CGMCC 1.7061(T)","ssurrn_hit_uid":47085815,"similarity":0.90625,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter zhejiangensis;;jgi.1058024","n_genome":0},{"n_mismatch":132,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter mobilis","n_compared":1404,"status":"TYPE","strain_name":"CN46","acc":"EU293412","authors":"Huo et al. 2008","completeness":0.9774281805745554,"name_formatted":"Marinobacter mobilis CN46(T)","ssurrn_hit_uid":47085816,"similarity":0.905982905982906,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter mobilis;;EU293412","n_genome":0},{"n_mismatch":132,"db_type":"all","db_version":"20181022","taxon_name":"JX240524_s","n_compared":1401,"status":"NOT_TYPE","strain_name":"SL93b","acc":"JX240524","authors":"","completeness":1,"name_formatted":"JX240524_s SL93b","ssurrn_hit_uid":47085817,"similarity":0.9057815845824411,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Cellvibrionaceae;;Marinimicrobium;JX240524_s;;JX240524","n_genome":0},{"n_mismatch":134,"db_type":"all","db_version":"20181022","taxon_name":"JF727669_s","n_compared":1406,"status":"NOT_TYPE","strain_name":"bac474","acc":"JF727669","authors":"","completeness":1,"name_formatted":"JF727669_s bac474","ssurrn_hit_uid":47085818,"similarity":0.9046941678520626,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Pseudohongiella_f;;GU474872_g;JF727669_s;;JF727669","n_genome":0},{"n_mismatch":135,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter xestospongiae","n_compared":1408,"status":"TYPE","strain_name":"UST090418-1611","acc":"HQ203044","authors":"Lee et al. 2012","completeness":0.9808481532147743,"name_formatted":"Marinobacter xestospongiae UST090418-1611(T)","ssurrn_hit_uid":47085819,"similarity":0.9041193181818182,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter xestospongiae;;HQ203044","n_genome":0},{"n_mismatch":135,"db_type":"all","db_version":"20181022","taxon_name":"EU491869_s","n_compared":1405,"status":"NOT_TYPE","strain_name":"EPR3965-I2-Bc59","acc":"EU491869","authors":"","completeness":1,"name_formatted":"EU491869_s EPR3965-I2-Bc59","ssurrn_hit_uid":47085820,"similarity":0.9039145907473309,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Pseudohongiella_f;;GU474872_g;EU491869_s;;EU491869","n_genome":0},{"n_mismatch":136,"db_type":"all","db_version":"20181022","taxon_name":"EU686596_s","n_compared":1402,"status":"NOT_TYPE","strain_name":"AD12-E7","acc":"EU686596","authors":"","completeness":1,"name_formatted":"EU686596_s AD12-E7","ssurrn_hit_uid":47085821,"similarity":0.9029957203994294,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Oleiphilaceae;;Oleiphilus;EU686596_s;;EU686596","n_genome":0},{"n_mismatch":136,"db_type":"valid","db_version":"20181022","taxon_name":"Marinimicrobium haloxylanilyticum","n_compared":1401,"status":"TYPE","strain_name":"SX15","acc":"GQ920839","authors":"Møller et al. 2010","completeness":1,"name_formatted":"Marinimicrobium haloxylanilyticum SX15(T)","ssurrn_hit_uid":47085822,"similarity":0.9029264810849393,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Cellvibrionaceae;;Marinimicrobium;Marinimicrobium haloxylanilyticum;;GQ920839","n_genome":0},{"n_mismatch":137,"db_type":"all","db_version":"20181022","taxon_name":"FM242295_s","n_compared":1401,"status":"NOT_TYPE","strain_name":"8 T9d-oil","acc":"FM242295","authors":"","completeness":1,"name_formatted":"FM242295_s 8 T9d-oil","ssurrn_hit_uid":47085823,"similarity":0.9022127052105638,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;EU287122_f;;EU328024_g;FM242295_s;;FM242295","n_genome":0},{"n_mismatch":138,"db_type":"all","db_version":"20181022","taxon_name":"AB089803_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"HS7","acc":"AB089803","authors":"","completeness":1,"name_formatted":"AB089803_s HS7","ssurrn_hit_uid":47085824,"similarity":0.9019886363636364,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;AB089803_s;;AB089803","n_genome":0},{"n_mismatch":138,"db_type":"all","db_version":"20181022","taxon_name":"LWGF_s","n_compared":1402,"status":"NOT_TYPE","strain_name":"HI0125","acc":"LWGF01000380","authors":"","completeness":1,"name_formatted":"LWGF_s HI0125","ssurrn_hit_uid":47085825,"similarity":0.9015691868758916,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Oleiphilaceae;;Oleiphilus;LWGF_s;;LWGF01000380","n_genome":0},{"n_mismatch":138,"db_type":"all","db_version":"20181022","taxon_name":"EU394576_s","n_compared":1401,"status":"NOT_TYPE","strain_name":"PEACE2006/175_P3","acc":"EU394576","authors":"","completeness":1,"name_formatted":"EU394576_s PEACE2006/175_P3","ssurrn_hit_uid":47085826,"similarity":0.9014989293361885,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Halieaceae;;EU394576_g;EU394576_s;;EU394576","n_genome":0},{"n_mismatch":139,"db_type":"valid","db_version":"20181022","taxon_name":"Ketobacter alkanivorans","n_compared":1408,"status":"TYPE","strain_name":"GI5","acc":"KY303768","authors":"Kim et al. 2018","completeness":1,"name_formatted":"Ketobacter alkanivorans GI5(T)","ssurrn_hit_uid":47085827,"sim
+1e0e
+ilarity":0.9012784090909091,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Ketobacter;Ketobacter alkanivorans;;KY303768","n_genome":0},{"n_mismatch":139,"db_type":"all","db_version":"20181022","taxon_name":"EU735695_s","n_compared":1403,"status":"NOT_TYPE","strain_name":"SN149","acc":"EU735695","authors":"","completeness":1,"name_formatted":"EU735695_s SN149","ssurrn_hit_uid":47085828,"similarity":0.9009265858873842,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;EU287122_f;;AY622251_g;EU735695_s;;EU735695","n_genome":0},{"n_mismatch":139,"db_type":"all","db_version":"20181022","taxon_name":"JQ425948_s","n_compared":1400,"status":"NOT_TYPE","strain_name":"CT0C1AG08","acc":"JQ425948","authors":"","completeness":0.987688098495212,"name_formatted":"JQ425948_s CT0C1AG08","ssurrn_hit_uid":47085829,"similarity":0.9007142857142857,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;FM242290_f;;FM242290_g;JQ425948_s;;JQ425948","n_genome":0},{"n_mismatch":140,"db_type":"all","db_version":"20181022","taxon_name":"FM242474_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"82 T12d+oil","acc":"FM242474","authors":"","completeness":1,"name_formatted":"FM242474_s 82 T12d+oil","ssurrn_hit_uid":47085830,"similarity":0.9005681818181818,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Alcanivoracaceae;;Alcanivorax;FM242474_s;;FM242474","n_genome":0},{"n_mismatch":140,"db_type":"all","db_version":"20181022","taxon_name":"HQ191049_s","n_compared":1407,"status":"NOT_TYPE","strain_name":"JSS S04 317","acc":"HQ191049","authors":"","completeness":1,"name_formatted":"HQ191049_s JSS S04 317","ssurrn_hit_uid":47085831,"similarity":0.900497512437811,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;FM242290_f;;HQ191049_g;HQ191049_s;;HQ191049","n_genome":0},{"n_mismatch":140,"db_type":"all","db_version":"20181022","taxon_name":"AF228694_s","n_compared":1403,"status":"NOT_TYPE","strain_name":"EHK-1","acc":"AF228694","authors":"","completeness":1,"name_formatted":"AF228694_s EHK-1","ssurrn_hit_uid":47085832,"similarity":0.9002138275124733,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Cellvibrionaceae;;AF228694_g;AF228694_s;;AF228694","n_genome":0},{"n_mismatch":140,"db_type":"all","db_version":"20181022","taxon_name":"FJ202933_s","n_compared":1402,"status":"NOT_TYPE","strain_name":"SGUS1172","acc":"FJ202933","authors":"","completeness":1,"name_formatted":"FJ202933_s SGUS1172","ssurrn_hit_uid":47085833,"similarity":0.9001426533523538,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Oleiphilaceae;;Oleiphilus;FJ202933_s;;FJ202933","n_genome":0},{"n_mismatch":141,"db_type":"all","db_version":"20181022","taxon_name":"HQ224981_s","n_compared":1408,"status":"NOT_TYPE","strain_name":"MF-Oct-18","acc":"HQ224981","authors":"","completeness":1,"name_formatted":"HQ224981_s MF-Oct-18","ssurrn_hit_uid":47085834,"similarity":0.8998579545454546,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;FM242290_f;;FM242290_g;HQ224981_s;;HQ224981","n_genome":0},{"n_mismatch":141,"db_type":"valid","db_version":"20181022","taxon_name":"Pseudohongiella nitratireducens","n_compared":1407,"status":"TYPE","strain_name":"SCS-49","acc":"LWHM01000024","authors":"Xu et al. 2016","completeness":1,"name_formatted":"Pseudohongiella nitratireducens SCS-49(T)","ssurrn_hit_uid":47085835,"similarity":0.8997867803837953,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Pseudohongiella_f;;Pseudohongiella;Pseudohongiella nitratireducens;;LWHM01000024","n_genome":0},{"n_mismatch":141,"db_type":"valid","db_version":"20181022","taxon_name":"Porticoccus hydrocarbonoclasticus","n_compared":1403,"status":"TYPE","strain_name":"MCTG13d","acc":"JQMM01000001","authors":"Gutierrez et al. 2011","completeness":1,"name_formatted":"Porticoccus hydrocarbonoclasticus MCTG13d(T)","ssurrn_hit_uid":47085836,"similarity":0.8995010691375623,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Porticoccaceae;;Porticoccus;Porticoccus hydrocarbonoclasticus;;JQMM01000001","n_genome":0},{"n_mismatch":142,"db_type":"valid","db_version":"20181022","taxon_name":"Halomonas gudaonensis","n_compared":1408,"status":"TYPE","strain_name":"CGMCC 1.6133","acc":"jgi.1057966","authors":"Wang et al. 2007","completeness":1,"name_formatted":"Halomonas gudaonensis CGMCC 1.6133(T)","ssurrn_hit_uid":47085837,"similarity":0.8991477272727273,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Halomonadaceae;;Halomonas;Halomonas gudaonensis;;jgi.1057966","n_genome":0},{"n_mismatch":142,"db_type":"valid","db_version":"20181022","taxon_name":"Microbulbifer thermotolerans","n_compared":1404,"status":"TYPE","strain_name":"JAMB A94","acc":"AB124836","authors":"Miyazaki et al. 2008","completeness":1,"name_formatted":"Microbulbifer thermotolerans JAMB A94(T)","ssurrn_hit_uid":47085838,"similarity":0.8988603988603988,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Microbulbiferaceae;;Microbulbifer;Microbulbifer thermotolerans;;AB124836","n_genome":0},{"n_mismatch":143,"db_type":"valid","db_version":"20181022","taxon_name":"Alkalimarinus sediminis","n_compared":1408,"status":"TYPE","strain_name":"FA028","acc":"KP178167","authors":"Zhao et al. 2015","completeness":1,"name_formatted":"Alkalimarinus sediminis FA028(T)","ssurrn_hit_uid":47085839,"similarity":0.8984375,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Oleiphilaceae;;Alkalimarinus;Alkalimarinus sediminis;;KP178167","n_genome":0},{"n_mismatch":145,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter halophilus","n_compared":1409,"status":"TYPE","strain_name":"XCD-X12","acc":"KC762322","authors":"Zhong et al. 2015","completeness":0.9972658920027341,"name_formatted":"Marinobacter halophilus XCD-X12(T)","ssurrn_hit_uid":47085840,"similarity":0.8970901348474095,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter halophilus;;KC762322","n_genome":0},{"n_mismatch":145,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter oulmenensis","n_compared":1409,"status":"TYPE","strain_name":"Set74","acc":"FJ897726","authors":"Kharroub et al. 2011","completeness":0.9876965140123035,"name_formatted":"Marinobacter oulmenensis Set74(T)","ssurrn_hit_uid":47085841,"similarity":0.8970901348474095,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter oulmenensis;;FJ897726","n_genome":0},{"n_mismatch":147,"db_type":"valid","db_version":"20181022","taxon_name":"Oleiphilus messinensis","n_compared":1399,"status":"TYPE","strain_name":"ME102","acc":"CP021425","authors":"Golyshin et al. 2002","completeness":1,"name_formatted":"Oleiphilus messinensis ME102(T)","ssurrn_hit_uid":47085842,"similarity":0.8949249463902788,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Oceanospirillales;;Oleiphilaceae;;Oleiphilus;Oleiphilus messinensis;;CP021425","n_genome":0},{"n_mismatch":149,"db_type":"valid","db_version":"20181022","taxon_name":"Marinobacter antarcticus","n_comp
+bc7
+ared":1409,"status":"TYPE","strain_name":"ZS2-30","acc":"FJ196022","authors":"Liu et al. 2012","completeness":1,"name_formatted":"Marinobacter antarcticus ZS2-30(T)","ssurrn_hit_uid":47085843,"similarity":0.8942512420156139,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Alteromonadales;;Marinobacter_f;;Marinobacter;Marinobacter antarcticus;;FJ196022","n_genome":0},{"n_mismatch":149,"db_type":"valid","db_version":"20181022","taxon_name":"Spongiibacter marinus","n_compared":1402,"status":"TYPE","strain_name":"HAL40b","acc":"AM117932","authors":"Graeber et al. 2008","completeness":0.9869684499314129,"name_formatted":"Spongiibacter marinus HAL40b(T)","ssurrn_hit_uid":47085844,"similarity":0.8937232524964337,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Spongiibacteraceae;;Spongiibacter;Spongiibacter marinus;;AM117932","n_genome":0},{"n_mismatch":149,"db_type":"valid","db_version":"20181022","taxon_name":"Congregibacter litoralis","n_compared":1401,"status":"TYPE","strain_name":"KT71","acc":"AAOA01000004","authors":"Spring et al. 2009","completeness":1,"name_formatted":"Congregibacter litoralis KT71(T)","ssurrn_hit_uid":47085845,"similarity":0.8936473947180585,"strain_uid":1155473,"taxonomy":"Bacteria;;;Proteobacteria;;Gammaproteobacteria;;Cellvibrionales;;Halieaceae;;Congregibacter;Congregibacter litoralis;;AAOA01000004","n_genome":0}],"completeness":0.9643835616438357,"ssurrn_seq":"TGCAGTCGAGCGGAAACGATGGTAGCTTGCTACCAGGCGTCGAGCGGCGGACGGGTGAGTAACGCGTGAGAATCTGCCCATTTGTGGGGGATAACTCGGGGAAACTCGAGCTAATACCGCATAATCCCTACGGGGGAAAGCAGGGGACCTTCGGGCCTTGTGCAGATGGATGAGCTCGCGTCGGATTAGCTTGTTGGTGAGGTAAAGGCTCACCAAGGCGACGATCCGTAGCTGGTCTGAGAGGATGATCAGCCACACCGGGACTGAGACACGGCCCGGACTCCTACGGGAGGCAGCAGTGGGGAATCTTGGACAATGGGGGCAACCCTGATCCAGCCATGCCGCGTGTGTGAAGAAGGCCTTCGGGTTGTAAAGCACTTTCAGTAGGGAGGAAGGCTTACCGCTAATAACGGTGAGTACTTGACGTTACCTACAGAAGAAGCACCGGCTAATTTCGTGCCAGCAGCCGCGGTAATACGAAAGGTGCGAGCGTTAATCGGAATTACTGGGCGTAAAGCGCGCGTAGGCGGTTTGTTAAGTCAGATGTGAAAGCCCCGGGCTCAACCTGGGAATTGCATTTGAAACTGGCAGGCTAGAGTGCAGTAGAGGGAGGTGGAATTTCCGGTGTAGCGGTGAAATGCGTAGAGATCGGAAGGAACACCAGTGGCGAAGGCGGCCTCCTGGACTGACACTGACGCTGAGGTGCGAAAGCGTGGGGAGCAAACAGGATTAGATACCCTGGTAGTCCACGCCGTAAACGATGTCTACTAGTCGTTGGGAATCTTAGTATTCTTGGTGACGAAGTTAACGCGATAAGTAGACCGCCTGGGGAGTACGGCCGCAAGGTTAAAACTCAAATGAATTGACGGGGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGATGCAACGCGAAGAACCTTACCAGGCCTTGACATCCTTGGAACTTTCTAGAGATAGATTGGTGCCTTCGGGAGCCAAGTGACAGGTGCTGCATGGCTGTCGTCAGCTCGTGTCGTGAGATGTTGGGTTAAGTCCCGTAACGAGCGCAACCCTTGTCCCTAGTTGCCAGCACTTCGGGTGGGAACTCTAGGGAGACTGCCGGTGACAAACCGGAGGAAGGTGGGGACGACGTCAAGTCATCATGGCCCTTACGGCCTGGGCTACACACGTGCTACAATGGGCAGTACAGAGGGCCGCGAAGTCGCGAGGCCAAGCAAATCCCTTAAAACTGTTCGTAGTCCGGATTGGAGTCTGCAACTCGACTCCATGAAGTCGGAATCGCTAGTAATCGCGAATCAGAATGTCGCGGTGAATACGTTCCCGGGCCTTGTACACACCGCCCGTCACACCATGGGAGTGGATTGCACCAGAAGTAGTTAGTCTAACCTTCGGGAGGACGATACCA","lag_length":23,"strain_uid":1155473,"lead_length":29,"auth":"authorized"});
+	});
+</script>	
+	
+</body>
+</html>
+0
+
