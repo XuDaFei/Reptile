@@ -1,5 +1,8 @@
 1.脚本需要安装3.0以上的python，并且配置好环境变量
 2.需要安装 request和xlwt依赖库
-3.不输出已经上传过的同名TXT
+打开命令行
+pip install xlwt
+pip install requests
+3.不输出已经上传过的同名TXT，----------爬取前建议清空一下查询的那个列表
 4.账号密码在account，可以替换成自己的账号
 5.output和input文件夹不要删，否则就无法正常输入输出数据

@@ -47,12 +47,27 @@ def replace_s(pos, sheet, htm):
             strain_name = re.search("\"strain_name\":\"(.*?)\"",result, re.S)
             if strain_name != None:
                 sheet.write(pos, 2, strain_name.group(1)+'(T)')
-            similarity = re.search("\"similarity\":(.*?),",result, re.S)
-            if similarity != None:
-                sheet.write(pos, 3, similarity.group(1))
-            taxonomy = re.search("\"taxonomy\":\"(.*?)\"",result, re.S)
-            if taxonomy != None:
-                sheet.write(pos, 4, taxonomy.group(1))
+            tmp = re.search("\"similarity\":(.*?),",result, re.S).group(1)
+            tmp = float(tmp)
+            if tmp == 1:
+                similarity = '100%'
+            else:
+                similarity = str(tmp*100)+'%'
+            sheet.write(pos, 3, similarity)
+            result_taxonomy = re.search("\"taxonomy\":\"(.*?)\"",result, re.S).group(1)
+            taxonomy = ""
+            for j in range(0,len(result_taxonomy)):
+                if result_taxonomy[j] == ' ':
+                    for k in range(len(taxonomy)-1,-1,-1):
+                        if taxonomy[k] == ';' and taxonomy[k-1] != ';':
+                            taxonomy = taxonomy[:-1]
+                            break
+                        taxonomy = taxonomy[:-1] 
+                    break
+                if result_taxonomy[j] == ';' and result_taxonomy[j-1] == ';':
+                    continue
+                taxonomy += result_taxonomy[j]
+            sheet.write(pos, 4, taxonomy)
             return 'replace successful !!!!!!!!!!!'
             break
         cnt += 1
@@ -122,8 +137,26 @@ def login(url,useName,password):
             sheet.write(i+1, 0, doneData.get('strain_name','None'))
             sheet.write(i+1, 1, doneData.get('result_taxon','None'))
             sheet.write(i+1, 2, doneData.get('result_strain','None')+'(T)')
-            sheet.write(i+1, 3, doneData.get('result_similarity','None'))
-            sheet.write(i+1, 4, doneData.get('result_taxonomy','None'))
+            tmp = doneData.get('result_similarity','None')
+            if tmp == 1:
+                similarity = '100%'
+            else:
+                similarity = str(tmp*100)+'%'
+            sheet.write(i+1, 3, similarity)
+            result_taxonomy = doneData.get('result_taxonomy','None')
+            taxonomy = ""
+            for j in range(0,len(result_taxonomy)):
+                if result_taxonomy[j] == ' ':
+                    for k in range(len(taxonomy)-1,-1,-1):
+                        if taxonomy[k] == ';' and taxonomy[k-1] != ';':
+                            taxonomy = taxonomy[:-1]
+                            break
+                        taxonomy = taxonomy[:-1]   
+                    break
+                if result_taxonomy[j] == ';' and result_taxonomy[j-1] == ';':
+                    continue
+                taxonomy += result_taxonomy[j]
+            sheet.write(i+1, 4, taxonomy)
             sheet.write(i+1, 5, doneData.get('strain_length','None'))
             if re.search("_s", doneData.get('result_taxon','None'), re.S) != None:
                 print('find *_s +++++++++++++++ replace',doneData.get('result_taxon','None'))
@@ -133,7 +166,6 @@ def login(url,useName,password):
                 s = session.get("https://www.ezbiocloud.net/identify/result", params = getID, verify = False)
                 print(replace_s(i+1, sheet, s.text))
     NowTime = time.time()
-    str(NowTime)
     book.save(rootdir+str(NowTime)+'.xls')
 
 #---------------get Account-----------------
@@ -147,7 +179,7 @@ File_Password = re.search("\"Password\":\"(.*?)\"", Account_ifm, re.S)
 if File_Account != None and File_Password != None:
     Account = File_Account.group(1)
     Password = File_Password.group(1)
-
+f.close()
 print(Account, Password)
 myurl = "https://www.ezbiocloud.net/loginNew"
 login(myurl, Account, Password)
