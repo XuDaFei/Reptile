@@ -22,7 +22,7 @@ def getDataFromTXT():
 
         if os.path.isfile(path):
             f = open(path, 'r', encoding='UTF-8')
-            str_value = '{"strain_name":"' + Name + '","ssurrn_seq":"' + f.read() + '"}'
+            str_value = '{"strain_name":"' + Name + '","ssurrn_seq":"' + f.read().replace("\n", "") + '"}'
             #print(f.read())
             put_data = {
                 'jsonStr': str_value
