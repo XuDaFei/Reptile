@@ -45,7 +45,7 @@ def outputAnswerToExcl() :
     patternDarkGray.pattern = xlwt.Pattern.SOLID_PATTERN
     patternDarkGray.pattern_fore_colour = 23
     style.pattern = patternDarkGray
-    sheet.write_merge(1, 1, 0, 10, '', style)
+    sheet.write_merge(1, 1, 0, 9, '', style)
 
     style1 = xlwt.XFStyle()
     font.name = '宋体'
@@ -57,7 +57,7 @@ def outputAnswerToExcl() :
         if len(it) == 2 :
             sheet.write(pos, 0, it[0], style1)
             sheet.write(pos, 1, it[1], style1)
-            sheet.write_merge(pos+1, pos+1, 0, 10, '', style)
+            sheet.write_merge(pos+1, pos+1, 0, 9, '', style)
             pos = pos+2
             continue
         # sheet.write(pos, 0, it[0], style1)
@@ -97,7 +97,7 @@ def outputAnswerToExcl() :
         else :
             sheet.write_merge(posS, pos-1, 1, 1, '获取结果失败，请重新查询这个数据', style1)  
         sheet.write_merge(posS, pos-1, 2, 2, it[1], style1) 
-        sheet.write_merge(pos, pos, 0, 10, '', style)
+        sheet.write_merge(pos, pos, 0, 9, '', style)
         pos = pos+1
         
     NowTime = time.time()
@@ -415,7 +415,7 @@ for i in range(0, len(Answer)) :
 # 不断的查询每个post的状态，直到每个都输出结果
 flag = True
 while flag == True :
-    # time.sleep(600)
+    time.sleep(600)
     flag = False
     for key in WaitQueque :
         status = checkDataIsReady(key)
